@@ -3,7 +3,7 @@ import numpy as np
 import itertools
 import math 
 import tqdm 
-from choldate import cholupdate
+from .chol import cholupdate
 from scipy.linalg import solve_triangular
 
 TOL = 1e-10
@@ -385,7 +385,7 @@ def check_greedy_css_inputs(Sigma, k, cutoffs, include, exclude, tol):
         raise ValueError('Exclude must be a numpy array of integers from 0 to p-1.')
     if len(include) != len(set_include):
         raise ValueError("Include has repeated elements.")
-    if len(exclude) != len(set_include):
+    if len(exclude) != len(set_exclude):
         raise ValueError("Exclude has repeated elements.")
     if len(set_exclude.intersection(set_include)) > 0:
         raise ValueError("Include and exclude must be disjoint.")
@@ -552,7 +552,7 @@ def check_swapping_css_inputs(Sigma,
         raise ValueError('Exclude must be a numpy array of integers from 0 to p-1.')
     if len(include) != len(set_include):
         raise ValueError("Include has repeated elements.")
-    if len(exclude) != len(set_include):
+    if len(exclude) != len(set_exclude):
         raise ValueError("Exclude has repeated elements.")
     if len(set_exclude.intersection(set_include)) > 0:
         raise ValueError("Include and exclude must be disjoint.")
@@ -814,7 +814,7 @@ def check_exhuastive_css_inputs(Sigma,
         raise ValueError('Exclude must be a numpy array of integers from 0 to p-1.')
     if len(include) != len(set_include):
         raise ValueError("Include has repeated elements.")
-    if len(exclude) != len(set_include):
+    if len(exclude) != len(set_exclude):
         raise ValueError("Exclude has repeated elements.")
     if len(set_exclude.intersection(set_include)) > 0:
         raise ValueError("Include and exclude must be disjoint.")
@@ -956,7 +956,7 @@ def check_greedy_subset_factor_inputs(Sigma, cutoffs, include, exclude, tol):
         raise ValueError('Exclude must be a numpy array of integers from 0 to p-1.')
     if len(include) != len(set_include):
         raise ValueError("Include has repeated elements.")
-    if len(exclude) != len(set_include):
+    if len(exclude) != len(set_exclude):
         raise ValueError("Exclude has repeated elements.")
     if len(set_exclude.intersection(set_include)) > 0:
         raise ValueError("Include and exclude must be disjoint.")
@@ -1117,7 +1117,7 @@ def check_swapping_subset_factor_inputs(Sigma,
         raise ValueError('Exclude must be a numpy array of integers from 0 to p-1.')
     if len(include) != len(set_include):
         raise ValueError("Include has repeated elements.")
-    if len(exclude) != len(set_include):
+    if len(exclude) != len(set_exclude):
         raise ValueError("Exclude has repeated elements.")
     if len(set_exclude.intersection(set_include)) > 0:
         raise ValueError("Include and exclude must be disjoint.")

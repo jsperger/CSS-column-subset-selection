@@ -3,6 +3,7 @@ pyproject.toml
 setup.py
 pycss/CSS.py
 pycss/__init__.py
+pycss/chol.py
 pycss/model_selection.py
 pycss/subset_selection.py
 pycss/utils.py
