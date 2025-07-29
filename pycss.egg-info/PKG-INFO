@@ -1,6 +1,21 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: pycss
 Version: 0.0.9
 Summary: CSS Package
 Author: Anav Sood
-Author-email: anavsood@stanford.edu
+Author-email: Anav Sood <anavsood@gmail.com>
+Requires-Dist: scipy
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: tqdm
+Requires-Dist: pandas
+Requires-Dist: seaborn
+Requires-Dist: pytest
+Requires-Dist: jupyter
+Requires-Dist: cvxpy
+Requires-Dist: scs
+Requires-Dist: Cython
+Requires-Dist: pingouin
+Requires-Dist: clarabel
+Requires-Dist: mosek
+Dynamic: author

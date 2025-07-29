@@ -1,1 +1,14 @@
+scipy
 numpy
+matplotlib
+tqdm
+pandas
+seaborn
+pytest
+jupyter
+cvxpy
+scs
+Cython
+pingouin
+clarabel
+mosek

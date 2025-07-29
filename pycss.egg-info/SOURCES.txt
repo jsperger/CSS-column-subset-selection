@@ -1,7 +1,7 @@
-README
+README.md
+pyproject.toml
 setup.py
 pycss/CSS.py
-pycss/PCSS.py
 pycss/__init__.py
 pycss/model_selection.py
 pycss/subset_selection.py
@@ -13,6 +13,5 @@ pycss.egg-info/not-zip-safe
 pycss.egg-info/requires.txt
 pycss.egg-info/top_level.txt
 tests/test_CSS.py
-tests/test_PCSS.py
 tests/test_subset_selection.py
 tests/test_utils.py

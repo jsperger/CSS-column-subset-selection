@@ -1,0 +1,25 @@
+[project]
+name = "pycss"
+version = "0.0.9"
+description = "CSS Package"
+authors = [{ name = "Anav Sood", email = "anavsood@gmail.com" }]
+dependencies = [
+    "scipy",
+    "numpy",
+    "matplotlib",
+    "tqdm",
+    "pandas",
+    "seaborn",
+    "pytest",
+    "jupyter",
+    "cvxpy",
+    "scs",
+    "Cython",
+    "pingouin",
+    "clarabel",
+    "mosek",
+]
+
+[build-system]
+requires = ["setuptools", "cython"]
+build-backend = "setuptools.build_meta"
