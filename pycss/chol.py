@@ -1,14 +1,19 @@
 import numpy as np
 
+
 def cholupdate(R, x):
+    """Rank-1 update of an upper-triangular Cholesky factor, in place.
+
+    Drop-in replacement for choldate.cholupdate: given upper-triangular
+    `R` with `A = R.T @ R`, overwrites `R` with the factor of
+    `A + np.outer(x, x)`. Both `R` and `x` are modified in place and
+    nothing is returned, matching the choldate API exactly.
+    """
     p = len(x)
-    x = x.copy()
-    for i in range(p):
-        r = np.sqrt(R[i, i]**2 + x[i]**2)
-        c = r / R[i, i]
-        s = x[i] / R[i, i]
-        R[i, i] = r
-        if i < p - 1:
-            R[i, i+1:] = (R[i, i+1:] + s * x[i+1:]) / c
-            x[i+1:] = c * x[i+1:] - s * R[i, i+1:]
-    return R
+    for k in range(p):
+        r = np.hypot(R[k, k], x[k])
+        c = r / R[k, k]
+        s = x[k] / R[k, k]
+        R[k, k] = r
+        R[k, k + 1:] = (R[k, k + 1:] + s * x[k + 1:]) / c
+        x[k + 1:] = c * x[k + 1:] - s * R[k, k + 1:]
