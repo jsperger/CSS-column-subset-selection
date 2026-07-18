@@ -3,7 +3,7 @@ import numpy as np
 import itertools
 import math 
 import tqdm 
-from choldate import cholupdate
+from .chol import cholupdate
 from scipy.linalg import solve_triangular
 
 TOL = 1e-10
@@ -385,7 +385,7 @@ def check_greedy_css_inputs(Sigma, k, cutoffs, include, exclude, tol):
         raise ValueError('Exclude must be a numpy array of integers from 0 to p-1.')
     if len(include) != len(set_include):
         raise ValueError("Include has repeated elements.")
-    if len(exclude) != len(set_include):
+    if len(exclude) != len(set_exclude):
         raise ValueError("Exclude has repeated elements.")
     if len(set_exclude.intersection(set_include)) > 0:
         raise ValueError("Include and exclude must be disjoint.")
@@ -480,7 +480,7 @@ def greedy_css(Sigma,
             obj_vals = css_score(Sigma_R_active, tol=tol)
 
             # set the exclude objective values to infinity
-            obj_vals[np.in1d(idx_order[:num_active], exclude)] = np.inf
+            obj_vals[np.isin(idx_order[:num_active], exclude)] = np.inf
             # select next variable
             j_star = random_argmin(obj_vals)
 
@@ -552,7 +552,7 @@ def check_swapping_css_inputs(Sigma,
         raise ValueError('Exclude must be a numpy array of integers from 0 to p-1.')
     if len(include) != len(set_include):
         raise ValueError("Include has repeated elements.")
-    if len(exclude) != len(set_include):
+    if len(exclude) != len(set_exclude):
         raise ValueError("Exclude has repeated elements.")
     if len(set_exclude.intersection(set_include)) > 0:
         raise ValueError("Include and exclude must be disjoint.")
@@ -646,7 +646,7 @@ def swapping_css_with_init(Sigma,
                 obj_vals = css_score(Sigma_R[:num_active, :num_active], tol=tol)
 
                 # set the objective value to infinity for the excluded variables
-                obj_vals[np.in1d(idx_order[:num_active], exclude)] = np.inf
+                obj_vals[np.isin(idx_order[:num_active], exclude)] = np.inf
 
                 choices = np.flatnonzero(obj_vals == obj_vals.min())
 
@@ -814,7 +814,7 @@ def check_exhuastive_css_inputs(Sigma,
         raise ValueError('Exclude must be a numpy array of integers from 0 to p-1.')
     if len(include) != len(set_include):
         raise ValueError("Include has repeated elements.")
-    if len(exclude) != len(set_include):
+    if len(exclude) != len(set_exclude):
         raise ValueError("Exclude has repeated elements.")
     if len(set_exclude.intersection(set_include)) > 0:
         raise ValueError("Include and exclude must be disjoint.")
@@ -956,7 +956,7 @@ def check_greedy_subset_factor_inputs(Sigma, cutoffs, include, exclude, tol):
         raise ValueError('Exclude must be a numpy array of integers from 0 to p-1.')
     if len(include) != len(set_include):
         raise ValueError("Include has repeated elements.")
-    if len(exclude) != len(set_include):
+    if len(exclude) != len(set_exclude):
         raise ValueError("Exclude has repeated elements.")
     if len(set_exclude.intersection(set_include)) > 0:
         raise ValueError("Include and exclude must be disjoint.")
@@ -1041,7 +1041,7 @@ def greedy_subset_factor_selection(Sigma,
                 return np.concatenate([S[:num_selected], np.array([colinearity_errors[0][0]])]), reject
 
             # set the exclude objective values to infinity
-            obj_vals[np.in1d(idx_order[:num_active], exclude)] = np.inf
+            obj_vals[np.isin(idx_order[:num_active], exclude)] = np.inf
             # select next variable
             j_star = random_argmin(obj_vals)
 
@@ -1117,7 +1117,7 @@ def check_swapping_subset_factor_inputs(Sigma,
         raise ValueError('Exclude must be a numpy array of integers from 0 to p-1.')
     if len(include) != len(set_include):
         raise ValueError("Include has repeated elements.")
-    if len(exclude) != len(set_include):
+    if len(exclude) != len(set_exclude):
         raise ValueError("Exclude has repeated elements.")
     if len(set_exclude.intersection(set_include)) > 0:
         raise ValueError("Include and exclude must be disjoint.")
@@ -1229,7 +1229,7 @@ def swapping_subset_factor_with_init(Sigma,
                     return np.concatenate([T, np.array([colinearity_errors[0][0]])]), reject, -np.inf
 
                 # set the objective value to infinity for the excluded variables
-                obj_vals[np.in1d(idx_order[:(d+1)], exclude)] = np.inf
+                obj_vals[np.isin(idx_order[:(d+1)], exclude)] = np.inf
 
                 choices = np.flatnonzero(obj_vals == obj_vals.min())
 

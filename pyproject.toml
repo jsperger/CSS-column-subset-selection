@@ -1,0 +1,34 @@
+[project]
+name = "pycss"
+version = "0.0.9"
+description = "CSS Package"
+authors = [{ name = "Anav Sood", email = "anavsood@gmail.com" }]
+requires-python = ">=3.10"
+dependencies = [
+    "scipy",
+    "numpy",
+    "matplotlib",
+    "tqdm",
+    "pandas",
+    "seaborn",
+    "pytest",
+    "jupyter",
+    "cvxpy",
+    "scs",
+    "pingouin",
+    "clarabel",
+    "mosek",
+]
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["pycss"]
+
+[dependency-groups]
+dev = ["choldate"]
+
+[tool.uv.sources]
+choldate = { path = "vendor/choldate" }

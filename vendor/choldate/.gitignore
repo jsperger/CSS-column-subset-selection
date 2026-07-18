@@ -1,0 +1,6 @@
+build/
+*.egg-info/
+choldate/_choldate.c
+*.so
+__pycache__/
+*.pyc
