@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 
 from pycss.chol import cholupdate, choldowndate
-from tests.test_choldate_vendored import random_spd, upper_factor
+from tests.helpers import random_spd, upper_factor
 
 
 @pytest.mark.parametrize("p", [1, 2, 5, 20, 100])

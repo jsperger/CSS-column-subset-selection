@@ -6,6 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "choldate"
 version = "0.1.0+pycss.vendored"
 description = "Rank-1 Cholesky update/downdate. Vendored from modusdatascience/choldate with the PEP 518 build fixes proposed in upstream PR #8."
+license = { file = "LICENSE" }
 requires-python = ">=3.10"
 dependencies = ["numpy"]
 

@@ -25,7 +25,9 @@ def choldowndate(R, x):
     Drop-in replacement for choldate.choldowndate: given upper-triangular
     `R` with `A = R.T @ R`, overwrites `R` with the factor of
     `A - np.outer(x, x)` (which must remain positive definite). Both `R`
-    and `x` are modified in place and nothing is returned.
+    and `x` are modified in place and nothing is returned. Violating that
+    precondition yields NaN entries (with a RuntimeWarning), whereas the
+    original Cython choldate silently returns an incorrect finite factor.
     """
     p = len(x)
     for k in range(p):
