@@ -480,7 +480,7 @@ def greedy_css(Sigma,
             obj_vals = css_score(Sigma_R_active, tol=tol)
 
             # set the exclude objective values to infinity
-            obj_vals[np.in1d(idx_order[:num_active], exclude)] = np.inf
+            obj_vals[np.isin(idx_order[:num_active], exclude)] = np.inf
             # select next variable
             j_star = random_argmin(obj_vals)
 
@@ -646,7 +646,7 @@ def swapping_css_with_init(Sigma,
                 obj_vals = css_score(Sigma_R[:num_active, :num_active], tol=tol)
 
                 # set the objective value to infinity for the excluded variables
-                obj_vals[np.in1d(idx_order[:num_active], exclude)] = np.inf
+                obj_vals[np.isin(idx_order[:num_active], exclude)] = np.inf
 
                 choices = np.flatnonzero(obj_vals == obj_vals.min())
 
@@ -1041,7 +1041,7 @@ def greedy_subset_factor_selection(Sigma,
                 return np.concatenate([S[:num_selected], np.array([colinearity_errors[0][0]])]), reject
 
             # set the exclude objective values to infinity
-            obj_vals[np.in1d(idx_order[:num_active], exclude)] = np.inf
+            obj_vals[np.isin(idx_order[:num_active], exclude)] = np.inf
             # select next variable
             j_star = random_argmin(obj_vals)
 
@@ -1229,7 +1229,7 @@ def swapping_subset_factor_with_init(Sigma,
                     return np.concatenate([T, np.array([colinearity_errors[0][0]])]), reject, -np.inf
 
                 # set the objective value to infinity for the excluded variables
-                obj_vals[np.in1d(idx_order[:(d+1)], exclude)] = np.inf
+                obj_vals[np.isin(idx_order[:(d+1)], exclude)] = np.inf
 
                 choices = np.flatnonzero(obj_vals == obj_vals.min())
 
