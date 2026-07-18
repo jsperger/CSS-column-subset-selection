@@ -1,34 +1,18 @@
 # CSS
 
-## Installation (with uv)
+## Installation
 
-1. Clone the git repo:
-```
-git clone git@github.com:AnavSood/CSS.git
-```
+This fork uses [uv](https://docs.astral.sh/uv/). From the repo root:
 
-2. Create a virtual environment and install the dependencies using `uv`:
 ```
-uv venv
-source .venv/bin/activate
-uv pip install -e .
+uv sync
+uv run pytest tests/
 ```
 
-**Note:** There are known issues with installing the `choldate` and `rpy2` dependencies. If you encounter issues, you may need to install them manually.
-
-## Installation (with conda)
-
-1. If you do not have conda installed already, please install it. There are many ways to get conda. We recommend installing Mambaforge which is a conda installation with mamba installed by default and set to use conda-forge as the default set of package repositories. 
-
-2. Clone the git repo:
-```
-git clone git@github.com:AnavSood/CSS.git
-```
-
-3. Set up your conda environment. The list of packages that will be installed inside your conda environment can be seen in `environment.yml`.
-```
-mamba update -y conda
-# create a development virtual environment with useful tools
-mamba env create
-conda activate CSS
-```
+`pycss` itself is pure Python. The original Cython
+[choldate](https://github.com/modusdatascience/choldate) dependency is
+replaced by a pure-NumPy implementation in `pycss/chol.py`; the original
+package is vendored under `vendor/choldate/` (with the build fixes from
+[choldate PR #8](https://github.com/modusdatascience/choldate/pull/8)) as a
+dev-only dependency so the replacement is tested against it
+(`tests/test_chol.py`). Reference benchmarks live in `benchmarks/`.
