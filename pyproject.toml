@@ -3,6 +3,7 @@ name = "pycss"
 version = "0.0.9"
 description = "CSS Package"
 authors = [{ name = "Anav Sood", email = "anavsood@gmail.com" }]
+requires-python = ">=3.10"
 dependencies = [
     "scipy",
     "numpy",
@@ -14,12 +15,14 @@ dependencies = [
     "jupyter",
     "cvxpy",
     "scs",
-    "Cython",
     "pingouin",
     "clarabel",
     "mosek",
 ]
 
 [build-system]
-requires = ["setuptools", "cython"]
+requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["pycss"]
