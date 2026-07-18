@@ -374,6 +374,19 @@ wheels = [
 ]
 
 [[package]]
+name = "choldate"
+version = "0.1.0+pycss.vendored"
+source = { directory = "vendor/choldate" }
+dependencies = [
+    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.11.*'" },
+    { name = "numpy", version = "2.5.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "numpy" }]
+
+[[package]]
 name = "clarabel"
 version = "0.11.1"
 source = { registry = "https://pypi.org/simple" }
@@ -2596,6 +2609,11 @@ dependencies = [
     { name = "tqdm" },
 ]
 
+[package.dev-dependencies]
+dev = [
+    { name = "choldate" },
+]
+
 [package.metadata]
 requires-dist = [
     { name = "clarabel" },
@@ -2612,6 +2630,9 @@ requires-dist = [
     { name = "seaborn" },
     { name = "tqdm" },
 ]
+
+[package.metadata.requires-dev]
+dev = [{ name = "choldate", directory = "vendor/choldate" }]
 
 [[package]]
 name = "pygments"

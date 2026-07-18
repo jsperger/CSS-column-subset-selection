@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=64", "cython", "numpy"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "choldate"
+version = "0.1.0+pycss.vendored"
+description = "Rank-1 Cholesky update/downdate. Vendored from modusdatascience/choldate with the PEP 518 build fixes proposed in upstream PR #8."
+requires-python = ">=3.10"
+dependencies = ["numpy"]
+
+[tool.setuptools]
+packages = ["choldate"]
